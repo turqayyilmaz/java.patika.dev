@@ -1,15 +1,11 @@
 let tasks = [];
 let list = document.getElementById("list");
 
-
-
-
 function changeStatus(e) {
         id = e.target.attributes["data-id"].value;
         tasks[id].isDone = tasks[id].isDone ? false : true;
         saveToDoList();
         e.target.classList.toggle("isDone");
-    
 }
 
 function removeToDo(e) {
@@ -30,7 +26,6 @@ function load() {
 }
 
 function addToDo(id, toDoName, isDone) {
-
     console.log("addToDo: ",id, toDoName, isDone);
     let liEl = document.createElement("li");
     liEl.textContent = toDoName;
@@ -61,8 +56,6 @@ function newToDo() {
         saveToDoList();
         $('#successToast').toast('show');
     }
-
-
 }
 
 function saveToDoList() {
@@ -72,69 +65,4 @@ function saveToDoList() {
 function getToDoList() {
     tasks = JSON.parse(localStorage.getItem('tasks'));
 }
-
-
-
-/*
-
-
-
-
-
-
-
-function newToDo() {
-    let taskName = $("#task").val().trim();
-    let isDone = false;
-    if (localStorage.getItem('tasks'))
-        tasks = JSON.parse(localStorage.getItem('tasks'));
-
-    let task = { "taskName": taskName, "isDone": isDone };
-
-    if (taskName == "") {
-        console.log("boş veri girilemez");
-    }
-    else {
-        tasks.push(task);
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        $("#task").val("");
-    }
-    toDoList();
-}
-
-let list = document.getElementById("list");
-
-list.addEventListener("click", function (e) {
-
-});
-
-$(function () {
-
-    $("#list li").click(function (e) {
-        index = e.currentTarget.id;
-        let task = tasks[index];
-        console.log(this)
-        task.isDone = !task.isDone
-        tasks[index] = task;
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        task.isDone ? e.target.className = "isDone" : e.target.className = "";
-    })
-
-})
-
-function toDoList() {
-
-    tasks = JSON.parse(localStorage.getItem('tasks'));
-    ul = $("#list");
-    ul.empty();
-
-    tasks.forEach((v, i) => {
-        ul.append(`<li id=${i} class="${v.isDone ? "isDone" : "isNotDone"}"><span>${v.taskName}</span></li>`);
-    });
-
-}
-
-toDoList();*/
-
-
 load();
