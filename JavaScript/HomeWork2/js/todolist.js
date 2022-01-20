@@ -65,4 +65,5 @@ function saveToDoList() {
 function getToDoList() {
     tasks = JSON.parse(localStorage.getItem('tasks'));
 }
+
 load();
